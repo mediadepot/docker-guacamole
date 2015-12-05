@@ -1,0 +1,14 @@
+{
+  "_comment": "FOR DETAILED FORMAT LOOK AT https://docs.docker.com/reference/api/docker_remote_api_v1.16/#create-a-container",
+  "AttachStdin": true,
+  "OpenStdin": true,
+  "HostConfig": {
+    "PortBindings":{ "8081/tcp": [{ "HostIp": "0.0.0.0", "HostPort": "8081" }] }
+  },
+  "Env": [
+    "DEPOT_USER=depot",
+    "DEPOT_PASSWORD=depot",
+    "SICKRAGE_API_KEY=dhelmet",
+    "PUSHOVER_USER_KEY=12345"
+  ]
+}
