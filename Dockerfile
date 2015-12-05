@@ -61,6 +61,5 @@ ADD ./template/user-mapping.tmpl /srv/guacamole/tmpl/user-mapping.tmpl
 
 ### Configuration
 ENV GUACAMOLE_HOME /srv/guacamole/config
-COPY guacamole.properties ${GUACAMOLE_HOME}/
 
 CMD ["/srv/start.sh"]
