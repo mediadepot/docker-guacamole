@@ -44,6 +44,7 @@ RUN echo $MYSQL_CONNECTOR_MD5  mysql-connector.tar.gz > mysql-connector.tar.gz.m
 
 #Create guacamole folder structure & set as volumes
 RUN curl -L -o /usr/local/bin/confd https://github.com/kelseyhightower/confd/releases/download/v0.11.0/confd-linux-amd64
+RUN chmod u+x  /usr/local/bin/confd
 
 ADD ./conf.d /etc/confd/conf.d
 ADD ./templates /etc/confd/templates
