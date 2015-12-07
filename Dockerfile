@@ -25,12 +25,13 @@ RUN echo 'export CATALINA_OPTS="$RUNTIME_OPTS"' > bin/setenv.sh
 
 ### Guacamole MySQL auth extension
 # Fetch and install Guacamole MySQL auth extension libs
-RUN mkdir -p /guacamole/classpath
+RUN mkdir -p /srv/guacamole/config/classpath
+
 RUN echo $GUACAMOLE_AUTH_MYSQL_SHA1  guacamole-auth-mysql.tar.gz > guacamole-auth-mysql.tar.gz.sha1 && \
     curl -L -o guacamole-auth-mysql.tar.gz http://sourceforge.net/projects/guacamole/files/current/extensions/guacamole-auth-mysql-0.9.4.tar.gz/download && \
     sha1sum -c --quiet guacamole-auth-mysql.tar.gz.sha1 && \
     tar xzf guacamole-auth-mysql.tar.gz && \
-    mv guacamole-auth-mysql-${GUACAMOLE_VERSION}/lib/*.jar /guacamole/classpath && \
+    mv guacamole-auth-mysql-${GUACAMOLE_VERSION}/lib/*.jar /srv/guacamole/config/classpath && \
     rm -rf guacamole-auth-mysql*
 
 # Fetch and install MySQL connector
@@ -38,7 +39,7 @@ RUN echo $MYSQL_CONNECTOR_MD5  mysql-connector.tar.gz > mysql-connector.tar.gz.m
     curl -L -o mysql-connector.tar.gz http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.34.tar.gz && \
     md5sum -c --quiet mysql-connector.tar.gz.md5 && \
     tar xzf mysql-connector.tar.gz && \
-    mv mysql-connector-java-*/mysql-connector-java-*.jar /guacamole/classpath && \
+    mv mysql-connector-java-*/mysql-connector-java-*.jar /srv/guacamole/config/classpath && \
     rm -rf mysql-connector*
 
 
@@ -49,7 +50,6 @@ RUN chmod u+x  /usr/local/bin/confd
 ADD ./conf.d /etc/confd/conf.d
 ADD ./templates /etc/confd/templates
 
-RUN mkdir -p /srv/guacamole/config
 
 #Copy over start script and docker-gen files
 ADD ./start.sh /srv/start.sh
