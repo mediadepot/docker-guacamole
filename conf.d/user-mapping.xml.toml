@@ -1,0 +1,8 @@
+[template]
+src = "user-mapping.xml.tmpl"
+dest = "/srv/guacamole/config/user-mapping.xml"
+keys = [
+  "/self/host/labels/depot.user",
+  "/self/host/labels/depot.password",
+  "/self/host/agent_ip"
+]

@@ -1,0 +1,6 @@
+[template]
+src = "guacamole.properties.tmpl"
+dest = "/srv/guacamole/config/guacamole.properties"
+keys = [
+  "GUACAMOLE_HOME",
+]

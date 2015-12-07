@@ -3,7 +3,7 @@ guacd-hostname: guacd
 guacd-port:     4822
 
 # Extension libs
-lib-directory: $GUACAMOLE_HOME/classpath
+lib-directory: {{getenv "GUACAMOLE_HOME"}}/classpath
 
 # MySQL auth provider
 auth-provider: net.sourceforge.guacamole.net.auth.mysql.MySQLAuthenticationProvider
@@ -14,4 +14,4 @@ mysql-username: guacamole
 mysql-password: BrveJwkG2dBe
 
 # Customized User Configuration
-user-mapping: $GUACAMOLE_HOME/user-mapping.xml
+user-mapping: {{getenv "GUACAMOLE_HOME"}}/user-mapping.xml

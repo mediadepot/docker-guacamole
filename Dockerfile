@@ -43,21 +43,16 @@ RUN echo $MYSQL_CONNECTOR_MD5  mysql-connector.tar.gz > mysql-connector.tar.gz.m
 
 
 #Create guacamole folder structure & set as volumes
-RUN apt-get -q update && \
-    apt-get install -qy --force-yes python-cheetah && \
-    apt-get -y autoremove && \
-    apt-get -y clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm -rf /tmp/*
+RUN curl -L -o /usr/local/bin/confd https://github.com/kelseyhightower/confd/releases/download/v0.11.0/confd-linux-amd64
 
-RUN mkdir -p /srv/guacamole/config && \
-	mkdir -p /srv/guacamole/tmpl
+ADD ./conf.d /etc/confd/conf.d
+ADD ./templates /etc/confd/templates
+
+RUN mkdir -p /srv/guacamole/config
 
 #Copy over start script and docker-gen files
 ADD ./start.sh /srv/start.sh
 RUN chmod u+x  /srv/start.sh
-ADD ./template/guacamole.tmpl /srv/guacamole/tmpl/guacamole.tmpl
-ADD ./template/user-mapping.tmpl /srv/guacamole/tmpl/user-mapping.tmpl
 
 ### Configuration
 ENV GUACAMOLE_HOME /srv/guacamole/config
