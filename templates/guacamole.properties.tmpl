@@ -13,5 +13,7 @@ lib-directory: {{getenv "GUACAMOLE_HOME"}}/classpath
 # mysql-username: guacamole
 # mysql-password: BrveJwkG2dBe
 
+auth-provider: net.sourceforge.guacamole.net.basic.BasicFileAuthenticationProvider
+
 # Customized User Configuration
 user-mapping: {{getenv "GUACAMOLE_HOME"}}/user-mapping.xml
