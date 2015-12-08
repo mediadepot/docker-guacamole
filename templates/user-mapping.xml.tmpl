@@ -7,7 +7,7 @@
 			<protocol>vnc</protocol>
 			<param name="hostname">{{getv "/self/host/agent_ip"}}</param>
 			<param name="port">5900</param>
-			<param name="password">VNCPASS</param>
+			<param name="password">{{getv "/self/host/labels/depot.password"}}</param>
 		</connection>
     </authorize>
 
