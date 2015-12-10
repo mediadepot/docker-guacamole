@@ -3,4 +3,7 @@ src = "guacamole.properties.tmpl"
 dest = "/srv/guacamole/config/guacamole.properties"
 keys = [
   "GUACAMOLE_HOME",
+  "/self/host/agent_ip",
+  "/self/host/labels/depot.user",
+  "/self/host/labels/depot.password"
 ]
